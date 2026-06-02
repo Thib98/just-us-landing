@@ -9,7 +9,9 @@ npm install
 npm run dev
 ```
 
-## Download URL
+## Download URL and badge
 
-The repeated iOS buttons use the `DOWNLOAD_URL` constant near the bottom of `index.html`.
+The App Store badge uses the `DOWNLOAD_URL` constant near the bottom of `index.html`.
 Replace the placeholder App Store URL with the real App Store or TestFlight URL when it is available.
+
+The page uses Apple's hosted "Download on the App Store" badge artwork rather than a custom button.
