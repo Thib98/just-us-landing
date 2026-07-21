@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fcf8f2" />
+    <meta name="description" content="Open your partner's Just Us invitation." />
+    <title>Join your partner in Just Us</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { min-height: 100vh; background: #fcf8f2; }
+      .invite-page { min-height: 100vh; display: grid; place-items: center; padding: 28px; }
+      .invite-card { width: min(100%, 480px); padding: 34px 26px; border: 1px solid #e4d8ca; border-radius: 26px; background: #fffdf9; box-shadow: 0 18px 50px rgba(53, 42, 34, 0.1); text-align: center; }
+      .invite-heart { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; color: #8a6e55; background: #eee7db; font-size: 1.8rem; }
+      .invite-card h1 { margin: 0 0 12px; font-size: clamp(2rem, 8vw, 3rem); line-height: 1.05; }
+      .invite-card p { margin: 0 0 22px; color: #74685f; line-height: 1.55; }
+      .invite-code { margin: 0 0 20px; padding: 16px; border-radius: 16px; background: #f4efe6; color: #8a6e55; font: 800 1.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.18em; }
+      .invite-open { display: block; padding: 15px 18px; border-radius: 15px; background: #8a6e55; color: white; font-weight: 760; text-decoration: none; }
+      .invite-help { margin-top: 16px !important; margin-bottom: 0 !important; font-size: 0.86rem; }
+      .invite-error { display: none; color: #a3433c !important; }
+    </style>
+  </head>
+  <body>
+    <main class="invite-page">
+      <section class="invite-card" aria-labelledby="invite-title">
+        <div class="invite-heart" aria-hidden="true">♥</div>
+        <h1 id="invite-title">Join your partner</h1>
+        <p>Your invite is ready. Open Just Us and the code will already be filled in for you.</p>
+        <div class="invite-code" data-invite-code>------</div>
+        <a class="invite-open" data-open-app href="#">Open Just Us</a>
+        <p class="invite-help">If the app does not open, install the latest Just Us TestFlight build and tap this link again.</p>
+        <p class="invite-error" data-invite-error>This invite link is incomplete. Ask your partner to share a fresh one.</p>
+      </section>
+    </main>
+    <script>
+      const rawCode = new URLSearchParams(window.location.search).get("code") || "";
+      const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
+      const codeElement = document.querySelector("[data-invite-code]");
+      const openLink = document.querySelector("[data-open-app]");
+      const errorElement = document.querySelector("[data-invite-error]");
+
+      if (code.length === 6) {
+        codeElement.textContent = `${code.slice(0, 3)} ${code.slice(3)}`;
+        openLink.href = `com.startwithwhy.justus://join?code=${encodeURIComponent(code)}`;
+      } else {
+        openLink.style.display = "none";
+        errorElement.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "AQ6K42EX94.com.startwithwhy.justus"
+        ],
+        "components": [
+          {
+            "/": "/join",
+            "?": {
+              "code": "*"
+            },
+            "comment": "Open a Just Us partner invitation in the iOS app"
+          }
+        ]
+      }
+    ]
+  }
+}

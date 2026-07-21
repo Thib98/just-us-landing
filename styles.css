@@ -229,10 +229,30 @@ h3 {
   box-shadow: 0 8px 22px rgba(53, 42, 34, 0.1);
 }
 
-.app-hero-image img {
+.app-hero-placeholder {
+  position: relative;
+  display: grid;
+  place-content: center;
+  gap: 6px;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  overflow: hidden;
+  color: rgba(83, 58, 45, 0.78);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.48) 0 22%, transparent 23%),
+    radial-gradient(circle at 12% 88%, rgba(138, 110, 85, 0.16) 0 24%, transparent 25%),
+    linear-gradient(135deg, #eee7db 0%, #e9ccd2 52%, #cfe0e5 100%);
+  text-align: center;
+}
+
+.app-hero-placeholder span {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.app-hero-placeholder small {
+  font-size: 0.66rem;
+  font-weight: 760;
 }
 
 .app-hero-image::after {
